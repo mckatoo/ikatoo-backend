@@ -48,22 +48,33 @@ model SkillsPage {
 }
 
 model Localization {
-  id        String @id @default(uuid())
-  latitude  Float
-  longitude Float
+  id            String        @id @default(uuid())
+  latitude      Float
+  longitude     Float
+  contactPageId String?
+  ContactPage   ContactPage[]
 }
 
-// Contact Page
-// title: string
-// description: string
-// localization?: Localization
+model ContactPage {
+  id             String        @id @default(uuid())
+  title          String
+  description    String
+  localization   Localization? @relation(fields: [localizationId], references: [id])
+  localizationId String
+}
 
-// Cards
-// title: string
-// subTitle?: string
-// content: string
+model Cards {
+  id             String        @id @default(uuid())
+  title          String
+  subTitle       String?
+  content        String
+  ProjectsPage   ProjectsPage? @relation(fields: [projectsPageId], references: [id])
+  projectsPageId String?
+}
 
-// Projects Page
-// snapshot: string
-// description: Card[]
-// githubLink?: string
+model ProjectsPage {
+  id          String  @id @default(uuid())
+  snapshot    String
+  description Cards[]
+  githubLink  String?
+}
