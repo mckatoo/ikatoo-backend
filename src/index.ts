@@ -1,5 +1,5 @@
 import express from "express";
-import { settings } from "./settings";
+import { settings } from "../settings";
 
 const APP_PORT = settings.APP_PORT;
 
