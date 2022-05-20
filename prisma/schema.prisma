@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Skill {
+  name         String      @unique
+  rankPercent  Float       @default(value: 0)
+  aboutPageId  String
+  about        AboutPage   @relation(fields: [aboutPageId], references: [id])
+  SkillsPage   SkillsPage? @relation(fields: [skillsPageId], references: [id])
+  skillsPageId String?
+}
+
+model AboutPage {
+  id          String  @id @default(uuid())
+  title       String?
+  description String
+  image       Json?
+  skills      Skill[]
+}
+
+model Job {
+  id             String      @id @default(uuid())
+  yearMonthStart String
+  yearMonthEnd   String?
+  jobTitle       String
+  jobDescription String
+  SkillsPage     SkillsPage? @relation(fields: [skillsPageId], references: [id])
+  skillsPageId   String?
+}
+
+model SkillsPage {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  skills      Skill[]
+  jobs        Job[]
+}
+
+model Localization {
+  id        String @id @default(uuid())
+  latitude  Float
+  longitude Float
+}
+
+// Contact Page
+// title: string
+// description: string
+// localization?: Localization
+
+// Cards
+// title: string
+// subTitle?: string
+// content: string
+
+// Projects Page
+// snapshot: string
+// description: Card[]
+// githubLink?: string
