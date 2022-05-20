@@ -12,6 +12,7 @@
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test:watch": "NODE_ENV=development jest --watch",
     "test": "NODE_ENV=development jest",
+    "prisma:generate": "prisma generate",
     "prisma:pull": "prisma db pull",
     "prisma:push": "prisma db push",
     "prisma:migrate": "prisma migrate dev",
