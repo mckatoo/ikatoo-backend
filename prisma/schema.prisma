@@ -19,6 +19,10 @@ model Skill {
   about        AboutPage   @relation(fields: [aboutPageId], references: [id])
   SkillsPage   SkillsPage? @relation(fields: [skillsPageId], references: [id])
   skillsPageId String?
+
+  @@index([skillsPageId])
+
+  @@map("skills")
 }
 
 model AboutPage {
@@ -27,6 +31,8 @@ model AboutPage {
   description String
   image       Json?
   skills      Skill[]
+
+  @@map("about_page")
 }
 
 model Job {
@@ -37,6 +43,10 @@ model Job {
   jobDescription String
   SkillsPage     SkillsPage? @relation(fields: [skillsPageId], references: [id])
   skillsPageId   String?
+
+  @@index([skillsPageId])
+
+  @@map("jobs")
 }
 
 model SkillsPage {
@@ -45,6 +55,8 @@ model SkillsPage {
   description String
   skills      Skill[]
   jobs        Job[]
+
+  @@map("skills_page")
 }
 
 model Localization {
@@ -53,6 +65,10 @@ model Localization {
   longitude     Float
   contactPageId String?
   ContactPage   ContactPage[]
+
+  @@index([contactPageId])
+
+  @@map("localization")
 }
 
 model ContactPage {
@@ -61,6 +77,10 @@ model ContactPage {
   description    String
   localization   Localization? @relation(fields: [localizationId], references: [id])
   localizationId String
+
+  @@index([localizationId])
+
+  @@map("contact_page")
 }
 
 model Cards {
@@ -70,6 +90,10 @@ model Cards {
   content        String
   ProjectsPage   ProjectsPage? @relation(fields: [projectsPageId], references: [id])
   projectsPageId String?
+
+  @@index([projectsPageId])
+
+  @@map("cards")
 }
 
 model ProjectsPage {
@@ -77,4 +101,15 @@ model ProjectsPage {
   snapshot    String
   description Cards[]
   githubLink  String?
+
+  @@map("projects_page")
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  username String @unique
+  password String
+
+  @@map("users")
 }
