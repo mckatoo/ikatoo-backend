@@ -6,7 +6,7 @@
 
 Into the directory of the project, do:
 `cp .env.example .env`
-`cp settings.ts.example settings.ts`
+`cp src/settings.ts.example src/settings.ts`
 **and edit the files with your configuration database**
 
 ### Install dependencies and generate prisma client

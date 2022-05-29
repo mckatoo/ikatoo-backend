@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Back-end for ikatoo.com.br",
   "main": "index.js",
-  "repository": "git@github.com:mckatoo/boilerplate-node.git",
+  "repository": "git@github.com:mckatoo/ikatoo-backend.git",
   "author": "Milton Carlos Katoo <mckatoo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "yarn build && node -r tsconfig-paths/register dist/index.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "lint": "yarn eslint",
     "typecheck": "tsc --project tsconfig.json --noEmit",

@@ -127,4 +127,4 @@ dist
 .webpack/
 
 # End of https://www.toptal.com/developers/gitignore/api/node
-/settings.ts
+/src/settings.ts
