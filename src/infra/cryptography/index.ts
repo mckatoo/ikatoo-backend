@@ -1,4 +1,4 @@
-import { settings } from '@project/settings'
+import { settings } from '@app/settings'
 import { createCipheriv, createDecipheriv, randomBytes } from 'crypto'
 
 const INPUT_ENCODING = 'utf8'
