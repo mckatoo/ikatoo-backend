@@ -1,2 +1,5 @@
 dist
 /*.js
+/tsconfig.json
+/package.json
+/.*.*
