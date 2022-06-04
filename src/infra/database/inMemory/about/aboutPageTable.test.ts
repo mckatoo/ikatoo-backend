@@ -1,8 +1,8 @@
 import aboutPageTable from './aboutPageTable'
 import { randomUUID } from 'crypto'
 
-describe('Test InMemory Database', () => {
-  it('Should default data on about_page table', () => {
+describe('Test About Data InMemory Database', () => {
+  it('Should show default data on about_page table', () => {
     const { table } = aboutPageTable
 
     expect(table).toHaveLength(1)
