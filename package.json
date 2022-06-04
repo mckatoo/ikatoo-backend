@@ -7,7 +7,7 @@
   "author": "Milton Carlos Katoo <mckatoo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn build && node -r tsconfig-paths/register dist/src/index.js",
+    "start": "rm -rf dist && yarn build && node -r tsconfig-paths/register dist/src/index.js",
     "build": "tsc",
     "lint": "eslint --fix --ext .ts .",
     "typecheck": "tsc --project tsconfig.json --noEmit",
