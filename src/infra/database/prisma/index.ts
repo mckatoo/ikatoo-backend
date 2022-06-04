@@ -1,5 +1,5 @@
-import { settings } from "@app/settings";
-import { Prisma, PrismaClient } from "@prisma/client";
+import { settings } from '@app/settings'
+import { Prisma, PrismaClient } from '@prisma/client'
 
 let prisma: PrismaClient<Prisma.PrismaClientOptions, never, Prisma.RejectOnNotFound | Prisma.RejectPerOperation>
 
@@ -15,4 +15,4 @@ if (settings.NODE_ENV === 'production') {
   prisma = global.prisma
 }
 
-export { prisma };
+export { prisma }

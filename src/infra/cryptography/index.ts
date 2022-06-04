@@ -4,7 +4,9 @@ import { createCipheriv, createDecipheriv, randomBytes } from 'crypto'
 const INPUT_ENCODING = 'utf8'
 const ALGORITHM = 'aes-256-ctr'
 const OUTPUT_ENCODING = 'hex'
-const KEY = settings.CRYPTOGRAPH_KEY ? settings.CRYPTOGRAPH_KEY.slice(0, 32) : randomBytes(16).toString('hex')
+const KEY = settings.CRYPTOGRAPH_KEY
+  ? settings.CRYPTOGRAPH_KEY.slice(0, 32)
+  : randomBytes(16).toString('hex')
 
 const encrypt = (value: string) => {
   const iv = randomBytes(16)
@@ -17,14 +19,19 @@ const encrypt = (value: string) => {
 
 const decrypt = (encrypted: string) => {
   const [iv, encryptedText] = encrypted.split(':')
-  const decipher = createDecipheriv(ALGORITHM, KEY, Buffer.from(iv, OUTPUT_ENCODING))
-  let decrypted = decipher.update(encryptedText, OUTPUT_ENCODING, INPUT_ENCODING)
+  const decipher = createDecipheriv(
+    ALGORITHM,
+    KEY,
+    Buffer.from(iv, OUTPUT_ENCODING)
+  )
+  let decrypted = decipher.update(
+    encryptedText,
+    OUTPUT_ENCODING,
+    INPUT_ENCODING
+  )
   decrypted += decipher.final(INPUT_ENCODING)
 
   return decrypted
 }
 
-export {
-  encrypt,
-  decrypt
-}
+export { encrypt, decrypt }
