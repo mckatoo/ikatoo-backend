@@ -40,13 +40,13 @@ describe('Test Skills Data InMemory Database', () => {
           { skillTitle: 'Back-end', rankPercent: 20 },
           { skillTitle: 'Modelagem de dados', rankPercent: 30 },
           { skillTitle: 'Front-end', rankPercent: 70 },
-          { skillTitle: 'Trabalho em equipe', rankPercent: 85 },
+          { skillTitle: 'Trabalho em equipe', rankPercent: 85 }
         ],
         lastJobs: [
           {
             jobTitle: 'Calm Organizador de Criptomoedas',
             jobDescription: 'Projeto pessoal para estudo.',
-            yearMonthStart: '2022 - 03',
+            yearMonthStart: '2022 - 03'
           },
           {
             jobTitle: 'Uniesi - Centro Universitário de Itapira',
@@ -59,14 +59,13 @@ describe('Test Skills Data InMemory Database', () => {
             jobDescription: 'Desenvolvimento do módulo venda de veículos do sistema de gerenciamento geral.',
             yearMonthStart: '2003 - 10',
             yearMonthEnd: '2003 - 12'
-          },
+          }
         ]
       }
     ])
   })
 
   it('Should insert new data on skills_page table', () => {
-
     skillsPageTable.insert({
       ...data,
       title: 'New insert test'
@@ -120,7 +119,7 @@ describe('Test Skills Data InMemory Database', () => {
     skillsPageTable.update(secondRegister.id!, {
       title: 'Updated data',
       description:
-        'Updated data description.',
+        'Updated data description.'
     })
 
     expect(skillsPageTable.table[1]).toHaveProperty(

@@ -34,13 +34,13 @@ const data: SkillsPageProps[] = [
       { skillTitle: 'Back-end', rankPercent: 20 },
       { skillTitle: 'Modelagem de dados', rankPercent: 30 },
       { skillTitle: 'Front-end', rankPercent: 70 },
-      { skillTitle: 'Trabalho em equipe', rankPercent: 85 },
+      { skillTitle: 'Trabalho em equipe', rankPercent: 85 }
     ],
     lastJobs: [
       {
         jobTitle: 'Calm Organizador de Criptomoedas',
         jobDescription: 'Projeto pessoal para estudo.',
-        yearMonthStart: '2022 - 03',
+        yearMonthStart: '2022 - 03'
       },
       {
         jobTitle: 'Uniesi - Centro Universitário de Itapira',
@@ -53,7 +53,7 @@ const data: SkillsPageProps[] = [
         jobDescription: 'Desenvolvimento do módulo venda de veículos do sistema de gerenciamento geral.',
         yearMonthStart: '2003 - 10',
         yearMonthEnd: '2003 - 12'
-      },
+      }
     ]
   }
 ]
