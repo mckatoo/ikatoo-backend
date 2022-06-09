@@ -9,7 +9,7 @@
   "scripts": {
     "start": "rm -rf dist && yarn build && node -r tsconfig-paths/register dist/src/index.js",
     "build": "tsc",
-    "lint": "eslint --fix --ext .ts .",
+    "lint": "eslint --fix --ext .ts ./src",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "dev": "tsnd -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
     "test": "jest --clearCache && jest --maxWorkers=50%",

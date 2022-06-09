@@ -26,6 +26,7 @@ module.exports = {
     rules: {
         "no-console": 1,
         "semi": ["error", "never"],
-        "quotes": ["error", "single"],
+        "@typescript-eslint/semi": ["error", "never"],
+        "quotes": ["error", "single"]
     },
 };
