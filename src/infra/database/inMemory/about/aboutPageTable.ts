@@ -1,15 +1,13 @@
 import { randomUUID } from 'crypto'
+import { ImageProps } from '../image/imageTable'
 
 type AboutPageProps = {
-  id?: string;
-  skills: string[];
-  title?: string;
-  describe: string;
-  image?: {
-    src: string;
-    alt: string;
-  };
-};
+  id?: string
+  skills: string[]
+  title?: string
+  describe: string
+  image?: ImageProps
+}
 
 type AboutPageWithoutId = Omit<AboutPageProps, 'id'>;
 
