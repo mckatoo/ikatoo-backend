@@ -10,30 +10,30 @@ describe('Test Contact Data InMemory Database', () => {
     expect(table).toEqual([
       {
         id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
-        src: 'https://ikatoo.com.br/images/about/about-page-image.jpg',
-        alt: 'About image'
+        source: 'https://ikatoo.com.br/images/about/about-page-image.jpg',
+        alternativeText: 'About image'
       }
     ])
   })
 
   it('Should insert new data on contact_page table', () => {
     const newData = {
-      src: './about-page-image-test.jpg',
-      alt: 'About image test'
+      source: './about-page-image-test.jpg',
+      alternativeText: 'About image test'
     }
 
     imageTable.insert(newData)
 
     expect(imageTable.table).toHaveLength(2)
-    expect(imageTable.table[1]).toHaveProperty('src', './about-page-image-test.jpg')
-    expect(imageTable.table[1]).toHaveProperty('alt', 'About image test')
+    expect(imageTable.table[1]).toHaveProperty('source', './about-page-image-test.jpg')
+    expect(imageTable.table[1]).toHaveProperty('alternativeText', 'About image test')
   })
 
   it('Should insert new data with id on contact_page table', () => {
     const newData = {
       id: randomUUID(),
-      src: './image-with-id.jpg',
-      alt: 'Image with id'
+      source: './image-with-id.jpg',
+      alternativeText: 'Image with id'
     }
 
     imageTable.insert(newData)
@@ -44,8 +44,8 @@ describe('Test Contact Data InMemory Database', () => {
   it('Should return an error when informing an existing id', () => {
     const newData = {
       id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
-      src: './image-with-id.jpg',
-      alt: 'Image with id'
+      source: './image-with-id.jpg',
+      alternativeText: 'Image with id'
     }
 
     expect(() => imageTable.insert(newData)).toThrowError(
@@ -69,16 +69,16 @@ describe('Test Contact Data InMemory Database', () => {
     const secondRegister = imageTable.table[1]
 
     imageTable.update(secondRegister.id!, {
-      src: './updated-image.jpg',
-      alt: 'Updated image'
+      source: './updated-image.jpg',
+      alternativeText: 'Updated image'
     })
 
     expect(imageTable.table[1]).toHaveProperty(
-      'alt',
+      'alternativeText',
       'Updated image'
     )
     expect(imageTable.table[1]).toHaveProperty(
-      'src',
+      'source',
       './updated-image.jpg'
     )
   })

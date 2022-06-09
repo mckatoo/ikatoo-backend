@@ -2,8 +2,8 @@ import { randomUUID } from 'crypto'
 
 export type ImageProps = {
   id?: string
-  src: string;
-  alt: string;
+  source: string;
+  alternativeText: string;
 }
 
 type ImageWithoutId = Omit<ImageProps, 'id'>
@@ -13,8 +13,8 @@ type OptionalImageProps = Partial<ImageWithoutId>
 const data: ImageProps[] = [
   {
     id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
-    src: 'https://ikatoo.com.br/images/about/about-page-image.jpg',
-    alt: 'About image'
+    source: 'https://ikatoo.com.br/images/about/about-page-image.jpg',
+    alternativeText: 'About image',
   }
 ]
 

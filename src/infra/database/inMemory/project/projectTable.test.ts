@@ -2,57 +2,43 @@ import { randomUUID } from 'crypto'
 
 import projectTable from './projectTable'
 
-describe('Test projects Data InMemory Database', () => {
+describe('Test projects table Data InMemory Database', () => {
   const data = {
-    snapshot: '/images/test.png',
-    description: {
-      title: 'Test title',
-      subTitle: '2021 - 02',
-      content: 'Test content'
-    }
+    snapshot: '/images/snap-calm.png',
+    description: 'Projeto teste',
+    title: 'Titulo teste',
+    yearMonthEnd: '2022 - 12',
+    projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
   }
 
   it('Should show default data on projects_page table', () => {
     const { table } = projectTable
 
-    expect(table).toHaveLength(4)
+    expect(table).toHaveLength(3)
     expect(table).toEqual([
       {
         id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
         snapshot: '/images/snap-calm.png',
-        description: {
-          title: 'Calm Organizador de Criptomoedas',
-          subTitle: '2022 - 03',
-          content: 'Projeto pessoal para estudo.'
-        }
+        description: 'Projeto pessoal para estudo.',
+        title: 'Calm Organizador de Criptomoedas',
+        yearMonthEnd: '2022 - 03',
+        projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
       },
       {
         id: '83ee76b5-c877-4eb1-b919-876d177bcf81',
         snapshot: '/images/snap-calm.png',
-        description: {
-          title: 'Calm Organizador de Criptomoedas',
-          subTitle: '2022 - 03',
-          content: 'Projeto pessoal para estudo.'
-        },
-        githubLink: 'https://github.com/mckatoo/calm'
+        description: 'Projeto pessoal para estudo1.',
+        title: 'Calm Organizador de Criptomoedas1',
+        yearMonthEnd: '2022 - 04',
+        projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
       },
       {
         id: '83ee76b5-c877-4eb1-b919-876d177bcf82',
         snapshot: '/images/snap-calm.png',
-        description: {
-          title: 'Calm Organizador de Criptomoedas',
-          subTitle: '2022 - 03',
-          content: 'Projeto pessoal para estudo.'
-        }
-      },
-      {
-        id: '83ee76b5-c877-4eb1-b919-876d177bcf83',
-        snapshot: '/images/snap-calm.png',
-        description: {
-          title: 'Calm Organizador de Criptomoedas',
-          subTitle: '2022 - 03',
-          content: 'Projeto pessoal para estudo.'
-        }
+        description: 'Projeto pessoal para estudo2.',
+        title: 'Calm Organizador de Criptomoedas2',
+        yearMonthEnd: '2022 - 05',
+        projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
       }
     ])
   })
@@ -60,29 +46,24 @@ describe('Test projects Data InMemory Database', () => {
   it('Should insert new data on projects_page table', () => {
     projectTable.insert(data)
 
-    expect(projectTable.table).toHaveLength(5)
-    expect(projectTable.table[4]).toHaveProperty('snapshot', '/images/test.png')
-    expect(projectTable.table[4]).toHaveProperty('description', {
-      title: 'Test title',
-      subTitle: '2021 - 02',
-      content: 'Test content'
-    })
+    expect(projectTable.table).toHaveLength(4)
+    expect(projectTable.table[3]).toHaveProperty('snapshot', '/images/snap-calm.png')
+    expect(projectTable.table[3]).toHaveProperty('description', 'Projeto teste')
   })
 
   it('Should insert new data with id on projects_page table', () => {
     const newData = {
       id: randomUUID(),
-      snapshot: '/images/random-test.png',
-      description: {
-        title: 'Test title random',
-        subTitle: '2021 - 09',
-        content: 'Test content random'
-      }
+      snapshot: '/images/snap-calm.png',
+      description: 'Projeto pessoal para estudo2.',
+      title: 'Calm Organizador de Criptomoedas2',
+      yearMonthEnd: '2022 - 05',
+      projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
     }
 
     projectTable.insert(newData)
 
-    expect(projectTable.table).toHaveLength(6)
+    expect(projectTable.table).toHaveLength(5)
   })
 
   it('Should return an error when informing an existing id', () => {
@@ -99,7 +80,7 @@ describe('Test projects Data InMemory Database', () => {
   it('Should delete the second register', () => {
     projectTable.delete(projectTable.table[1].id!)
 
-    expect(projectTable.table).toHaveLength(5)
+    expect(projectTable.table).toHaveLength(4)
   })
 
   it('Should return an error when trying to delete a non-existent id', () => {

@@ -9,49 +9,29 @@ describe('Test About Data InMemory Database', () => {
     expect(table).toEqual([
       {
         id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
-        skills: [
-          'javascript',
-          'dotnet',
-          'nodedotjs',
-          'html5',
-          'css3',
-          'typescript',
-          'jest',
-          'json',
-          'git',
-          'bootstrap',
-          'react',
-          'mysql',
-          'npm',
-          'php',
-          'java'
-        ],
         title: 'Olá. Bem vindo❗',
-        describe: '<p>Me chamo Milton Carlos Katoo, moro em Itapira, interior de São Paulo/Brasil. Pai de uma princesa e filho de excelente cozinheira Italiana e um saldoso Japonês faz tudo, sou um desenvolvedor full-stack que ama programação e desenvolvimento de software afim de melhorar a vida das pessoas.</p><p>Pessoa bem organizada, solucionador de problemas, funcionário independente com alta atenção aos detalhes.Fã de animes, mangas, games, séries de TV e filmes. Uma pessoa de família e pai de uma princesa.</p><p>Interessado em todo o espectro de programação e trabalhar em projetos ambiciosos com pessoas positivas.</p><a class="text-mck_aqua underline underline-offset-8" href="https://ikatoo.com.br/contact/" rel="contact"><span>🎉</span>Vamos fazer algo especial.</a><span>😄</span>'
+        description: '<p>Me chamo Milton Carlos Katoo, moro em Itapira, interior de São Paulo/Brasil. Pai de uma princesa e filho de excelente cozinheira Italiana e um saldoso Japonês faz tudo, sou um desenvolvedor full-stack que ama programação e desenvolvimento de software afim de melhorar a vida das pessoas.</p><p>Pessoa bem organizada, solucionador de problemas, funcionário independente com alta atenção aos detalhes.Fã de animes, mangas, games, séries de TV e filmes. Uma pessoa de família e pai de uma princesa.</p><p>Interessado em todo o espectro de programação e trabalhar em projetos ambiciosos com pessoas positivas.</p><a class="text-mck_aqua underline underline-offset-8" href="https://ikatoo.com.br/contact/" rel="contact"><span>🎉</span>Vamos fazer algo especial.</a><span>😄</span>'
       }])
   })
 
   it('Should insert new data on about_page table', () => {
     const newData = {
-      skills: ['skill 1', 'skill 2'],
       title: 'Title test',
-      describe: 'Describe test'
+      description: 'Describe test'
     }
 
     aboutPageTable.insert(newData)
 
     expect(aboutPageTable.table).toHaveLength(2)
-    expect(aboutPageTable.table[1]).toHaveProperty('skills', ['skill 1', 'skill 2'])
     expect(aboutPageTable.table[1]).toHaveProperty('title', 'Title test')
-    expect(aboutPageTable.table[1]).toHaveProperty('describe', 'Describe test')
+    expect(aboutPageTable.table[1]).toHaveProperty('description', 'Describe test')
   })
 
   it('Should insert new data with id on about_page table', () => {
     const newData = {
       id: randomUUID(),
-      skills: ['skill 1', 'skill 2'],
       title: 'Title test',
-      describe: 'Describe test'
+      description: 'Describe test'
     }
 
     aboutPageTable.insert(newData)
@@ -62,9 +42,8 @@ describe('Test About Data InMemory Database', () => {
   it('Should return an error when informing an existing id', () => {
     const newData = {
       id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
-      skills: ['skill 1', 'skill 2'],
       title: 'Title test',
-      describe: 'Describe test'
+      description: 'Describe test'
     }
 
     expect(() => aboutPageTable.insert(newData)).toThrowError('The id already exists.')
@@ -84,14 +63,12 @@ describe('Test About Data InMemory Database', () => {
     const secondRegister = aboutPageTable.table[1]
 
     aboutPageTable.update(secondRegister.id!, {
-      skills: ['skill 1 updated', 'skill 2 updated'],
       title: 'Title test updated',
-      describe: 'Describe test updated'
+      description: 'Describe test updated'
     })
 
-    expect(aboutPageTable.table[1]).toHaveProperty('skills', ['skill 1 updated', 'skill 2 updated'])
     expect(aboutPageTable.table[1]).toHaveProperty('title', 'Title test updated')
-    expect(aboutPageTable.table[1]).toHaveProperty('describe', 'Describe test updated')
+    expect(aboutPageTable.table[1]).toHaveProperty('description', 'Describe test updated')
   })
 
   it('Should return an error when trying to update a non-existent id', () => {

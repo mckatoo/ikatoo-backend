@@ -1,16 +1,13 @@
 import { randomUUID } from 'crypto'
 
-type CardProps = {
-  title: string
-  subTitle?: string
-  content: string
-}
-
 type ProjectProps = {
-  id?: string,
+  id?: string
   snapshot: string
-  description: CardProps
   githubLink?: string
+  title: string
+  yearMonthEnd?: string
+  description: string
+  projectsPageId: string
 }
 
 type ProjectWithoutId = Omit<ProjectProps, 'id'>
@@ -21,39 +18,26 @@ const data: ProjectProps[] = [
   {
     id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
     snapshot: '/images/snap-calm.png',
-    description: {
-      title: 'Calm Organizador de Criptomoedas',
-      subTitle: '2022 - 03',
-      content: 'Projeto pessoal para estudo.'
-    }
+    description: 'Projeto pessoal para estudo.',
+    title: 'Calm Organizador de Criptomoedas',
+    yearMonthEnd: '2022 - 03',
+    projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
   },
   {
     id: '83ee76b5-c877-4eb1-b919-876d177bcf81',
     snapshot: '/images/snap-calm.png',
-    description: {
-      title: 'Calm Organizador de Criptomoedas',
-      subTitle: '2022 - 03',
-      content: 'Projeto pessoal para estudo.'
-    },
-    githubLink: 'https://github.com/mckatoo/calm'
+    description: 'Projeto pessoal para estudo1.',
+    title: 'Calm Organizador de Criptomoedas1',
+    yearMonthEnd: '2022 - 04',
+    projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
   },
   {
     id: '83ee76b5-c877-4eb1-b919-876d177bcf82',
     snapshot: '/images/snap-calm.png',
-    description: {
-      title: 'Calm Organizador de Criptomoedas',
-      subTitle: '2022 - 03',
-      content: 'Projeto pessoal para estudo.'
-    }
-  },
-  {
-    id: '83ee76b5-c877-4eb1-b919-876d177bcf83',
-    snapshot: '/images/snap-calm.png',
-    description: {
-      title: 'Calm Organizador de Criptomoedas',
-      subTitle: '2022 - 03',
-      content: 'Projeto pessoal para estudo.'
-    }
+    description: 'Projeto pessoal para estudo2.',
+    title: 'Calm Organizador de Criptomoedas2',
+    yearMonthEnd: '2022 - 05',
+    projectsPageId: '83ee76b5-c877-4eb1-b919-876d177bcf85'
   }
 ]
 
