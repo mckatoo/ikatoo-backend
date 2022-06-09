@@ -9,9 +9,9 @@ type AboutPageProps = {
   image?: ImageProps
 }
 
-type AboutPageWithoutId = Omit<AboutPageProps, 'id'>;
+type AboutPageWithoutId = Omit<AboutPageProps, 'id'>
 
-type OptionalAboutPageProps = Partial<AboutPageWithoutId>;
+type OptionalAboutPageProps = Partial<AboutPageWithoutId>
 
 const data: AboutPageProps[] = [
   {

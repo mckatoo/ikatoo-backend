@@ -3,18 +3,18 @@ import { randomUUID } from 'crypto'
 type LocalizationType = {
   lat: number;
   lng: number;
-};
+}
 
 type ContactPageProps = {
   id?: string;
   title: string;
   description: string;
   localization?: LocalizationType;
-};
+}
 
-type ContactPageWithoutId = Omit<ContactPageProps, 'id'>;
+type ContactPageWithoutId = Omit<ContactPageProps, 'id'>
 
-type OptionalContactPageProps = Partial<ContactPageWithoutId>;
+type OptionalContactPageProps = Partial<ContactPageWithoutId>
 
 const data: ContactPageProps[] = [
   {

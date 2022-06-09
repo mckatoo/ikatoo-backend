@@ -16,9 +16,9 @@ type SkillsPageProps = {
   }[]
 }
 
-type SkillsPageWithoutId = Omit<SkillsPageProps, 'id'>;
+type SkillsPageWithoutId = Omit<SkillsPageProps, 'id'>
 
-type OptionalSkillsPageProps = Partial<SkillsPageWithoutId>;
+type OptionalSkillsPageProps = Partial<SkillsPageWithoutId>
 
 const data: SkillsPageProps[] = [
   {
