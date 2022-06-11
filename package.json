@@ -14,13 +14,12 @@
     "dev": "tsnd -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
     "test": "jest --clearCache && jest --maxWorkers=50%",
     "test:watch": "jest --clearCache && jest --watch --maxWorkers=25%",
-    "prisma": "prisma --schema ./src/infra/database/prisma/schema.prisma",
-    "prisma:generate": "yarn prisma generate",
-    "prisma:pull": "yarn prisma db pull",
-    "prisma:push": "yarn prisma db push",
-    "prisma:migrate": "yarn prisma migrate dev",
-    "prisma:migrate:reset": "yarn prisma migrate reset",
-    "prisma:studio": "yarn prisma studio"
+    "prisma:generate": "prisma generate --schema ./src/infra/database/prisma/schema.prisma",
+    "prisma:pull": "prisma db pull --schema ./src/infra/database/prisma/schema.prisma",
+    "prisma:push": "prisma db push --schema ./src/infra/database/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema ./src/infra/database/prisma/schema.prisma",
+    "prisma:migrate:reset": "prisma migrate reset --schema ./src/infra/database/prisma/schema.prisma",
+    "prisma:studio": "prisma studio --schema ./src/infra/database/prisma/schema.prisma"
   },
   "devDependencies": {
     "@types/bcrypt": "5.0.0",

@@ -12,104 +12,86 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
-model Skill {
-  name         String      @unique
-  rankPercent  Float       @default(value: 0)
-  aboutPageId  String
-  about        AboutPage   @relation(fields: [aboutPageId], references: [id])
-  SkillsPage   SkillsPage? @relation(fields: [skillsPageId], references: [id])
-  skillsPageId String?
+model Skills {
+  Id           String      @id @default(uuid())
+  Title        String      @unique
+  RankPercent  Float       @default(value: 0)
+  AboutPage_Id  String
+  About        AboutPage   @relation(fields: [AboutPage_Id], references: [Id])
+  SkillsPage   SkillsPage? @relation(fields: [SkillsPage_Id], references: [Id])
+  SkillsPage_Id String?
 
-  @@index([skillsPageId])
-
-  @@map("skills")
+  @@index([SkillsPage_Id])
 }
 
 model AboutPage {
-  id          String  @id @default(uuid())
-  title       String?
-  description String
-  image       Json?
-  skills      Skill[]
-
-  @@map("about_page")
+  Id          String   @id @default(uuid())
+  Title       String?
+  Description String
+  Skills      Skills[]
 }
 
-model Job {
-  id             String      @id @default(uuid())
-  yearMonthStart String
-  yearMonthEnd   String?
-  jobTitle       String
-  jobDescription String
-  SkillsPage     SkillsPage? @relation(fields: [skillsPageId], references: [id])
-  skillsPageId   String?
+model LastJobs {
+  Id             String      @id @default(uuid())
+  YearMonthStart String
+  YearMonthEnd   String?
+  JobTitle       String
+  JobDescription String
+  SkillsPage     SkillsPage? @relation(fields: [SkillsPage_Id], references: [Id])
+  SkillsPage_Id   String?
 
-  @@index([skillsPageId])
-
-  @@map("jobs")
+  @@index([SkillsPage_Id])
 }
 
 model SkillsPage {
-  id          String  @id @default(uuid())
-  title       String
-  description String
-  skills      Skill[]
-  jobs        Job[]
-
-  @@map("skills_page")
+  Id          String     @id @default(uuid())
+  Title       String
+  Description String
+  Skills      Skills[]
+  Jobs        LastJobs[]
 }
 
 model Localization {
-  id            String        @id @default(uuid())
-  latitude      Float
-  longitude     Float
-  contactPageId String?
+  Id            String        @id @default(uuid())
+  Latitude      Float
+  Longitude     Float
+  ContactPageId String?
   ContactPage   ContactPage[]
 
-  @@index([contactPageId])
-
-  @@map("localization")
+  @@index([ContactPageId])
 }
 
 model ContactPage {
-  id             String        @id @default(uuid())
-  title          String
-  description    String
-  localization   Localization? @relation(fields: [localizationId], references: [id])
-  localizationId String
+  Id             String        @id @default(uuid())
+  Title          String
+  Description    String
+  Localization   Localization? @relation(fields: [Localization_Id], references: [Id])
+  Localization_Id String
 
-  @@index([localizationId])
-
-  @@map("contact_page")
+  @@index([Localization_Id])
 }
 
 model Cards {
-  id             String        @id @default(uuid())
-  title          String
-  subTitle       String?
-  content        String
-  ProjectsPage   ProjectsPage? @relation(fields: [projectsPageId], references: [id])
-  projectsPageId String?
+  Id             String        @id @default(uuid())
+  Title          String
+  SubTitle       String?
+  Content        String
+  ProjectsPage   ProjectsPage? @relation(fields: [ProjectsPage_Id], references: [Id])
+  ProjectsPage_Id String?
 
-  @@index([projectsPageId])
-
-  @@map("cards")
+  @@index([ProjectsPage_Id])
 }
 
 model ProjectsPage {
-  id          String  @id @default(uuid())
-  snapshot    String
-  description Cards[]
-  githubLink  String?
-
-  @@map("projects_page")
+  Id          String  @id @default(uuid())
+  Snapshot    String
+  Description Cards[]
+  GithubLink  String?
 }
 
 model User {
-  id       String @id @default(uuid())
-  name     String
-  username String @unique
-  password String
-
-  @@map("users")
+  Id       String @id @default(uuid())
+  Name     String
+  Username String @unique
+  Password String
 }
