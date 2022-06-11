@@ -8,5 +8,7 @@ services:
       - 3306:3306
     environment:
       MARIADB_ROOT_PASSWORD: teste
+      MARIADB_USERNAME: teste
+      MARIADB_PASSWORD: teste
       MARIADB_DATABASE: teste
 
