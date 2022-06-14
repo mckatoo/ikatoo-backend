@@ -128,3 +128,6 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 /src/settings.ts
+
+# Database of the docker compose output
+/postgres-data

@@ -1,16 +1,9 @@
-type AboutProps = {
-  skills: string[]
-  title?: string
-  describe: string
-  image?: {
-    src: string
-    alt: string
-  }
-}
+import AboutPage from '@app/core/entities/AboutPage'
+
+export type UpdateAboutPageProps = { id: string } & Partial<AboutPage>
 
 export default interface IAboutPageRepository {
-  getAboutPage(): Promise<AboutProps>
-  createAboutPage({ ...aboutPage }: AboutProps): Promise<void>
-  updateAboutPage({ id, ...aboutPage }: { id: string } & Partial<AboutProps>): Promise<void>
+  getAboutPage(): Promise<AboutPage>
+  createAboutPage({ ...aboutPage }: AboutPage): Promise<void>
   deleteAboutPage(id: string): Promise<void>
 }

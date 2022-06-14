@@ -1,6 +1,5 @@
+import imageTable from '@app/infra/repository/inMemory/imageTable'
 import { randomUUID } from 'crypto'
-
-import imageTable from './imageTable'
 
 describe('Test Contact Data InMemory Database', () => {
   it('Should show default data on contact_page table', () => {

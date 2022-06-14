@@ -14,7 +14,7 @@ const data: ImageProps[] = [
   {
     id: '83ee76b5-c877-4eb1-b919-876d177bcf80',
     source: 'https://ikatoo.com.br/images/about/about-page-image.jpg',
-    alternativeText: 'About image',
+    alternativeText: 'About image'
   }
 ]
 

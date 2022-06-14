@@ -1,6 +1,5 @@
+import skillTable from '@app/infra/repository/inMemory/skillTable'
 import { randomUUID } from 'crypto'
-
-import skillsPageTable from './skillTable'
 
 describe('Test Skills Data InMemory Database', () => {
   const data = {
@@ -9,7 +8,7 @@ describe('Test Skills Data InMemory Database', () => {
   }
 
   it('Should show default data on skills_page table', () => {
-    const { table } = skillsPageTable
+    const { table } = skillTable
 
     expect(table).toHaveLength(4)
     expect(table).toEqual([
@@ -21,14 +20,14 @@ describe('Test Skills Data InMemory Database', () => {
   })
 
   it('Should insert new data on skills_page table', () => {
-    skillsPageTable.insert({
+    skillTable.insert({
       title: 'New insert test',
       rankPercent: 25
     })
 
-    expect(skillsPageTable.table).toHaveLength(5)
-    expect(skillsPageTable.table[1]).toHaveProperty('title', 'Modelagem de dados')
-    expect(skillsPageTable.table[1]).toHaveProperty('rankPercent', 30)
+    expect(skillTable.table).toHaveLength(5)
+    expect(skillTable.table[1]).toHaveProperty('title', 'Modelagem de dados')
+    expect(skillTable.table[1]).toHaveProperty('rankPercent', 30)
   })
 
   it('Should insert new data with id on skills_page table', () => {
@@ -38,9 +37,9 @@ describe('Test Skills Data InMemory Database', () => {
       rankPercent: 34
     }
 
-    skillsPageTable.insert(newData)
+    skillTable.insert(newData)
 
-    expect(skillsPageTable.table).toHaveLength(6)
+    expect(skillTable.table).toHaveLength(6)
   })
 
   it('Should return an error when informing an existing id', () => {
@@ -49,43 +48,43 @@ describe('Test Skills Data InMemory Database', () => {
       ...data
     }
 
-    expect(() => skillsPageTable.insert(newData)).toThrowError(
+    expect(() => skillTable.insert(newData)).toThrowError(
       'The id already exists.'
     )
   })
 
   it('Should delete the second register', () => {
-    skillsPageTable.delete(skillsPageTable.table[1].id!)
+    skillTable.delete(skillTable.table[1].id!)
 
-    expect(skillsPageTable.table).toHaveLength(5)
+    expect(skillTable.table).toHaveLength(5)
   })
 
   it('Should return an error when trying to delete a non-existent id', () => {
-    expect(() => skillsPageTable.delete(randomUUID())).toThrowError(
+    expect(() => skillTable.delete(randomUUID())).toThrowError(
       'The id does not exist.'
     )
   })
 
   it('Should update the second register', () => {
-    const secondRegister = skillsPageTable.table[1]
+    const secondRegister = skillTable.table[1]
 
-    skillsPageTable.update(secondRegister.id!, {
+    skillTable.update(secondRegister.id!, {
       title: 'Modelagem de dados',
       rankPercent: 30
     })
 
-    expect(skillsPageTable.table[1]).toHaveProperty(
+    expect(skillTable.table[1]).toHaveProperty(
       'title',
       'Modelagem de dados'
     )
-    expect(skillsPageTable.table[1]).toHaveProperty(
+    expect(skillTable.table[1]).toHaveProperty(
       'rankPercent',
       30
     )
   })
 
   it('Should return an error when trying to update a non-existent id', () => {
-    expect(() => skillsPageTable.update(randomUUID(), {})).toThrowError(
+    expect(() => skillTable.update(randomUUID(), {})).toThrowError(
       'The id does not exist.'
     )
   })

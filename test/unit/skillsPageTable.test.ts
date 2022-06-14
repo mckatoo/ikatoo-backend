@@ -1,6 +1,5 @@
+import skillsPageTable from '@app/infra/repository/inMemory/skillsPageTable'
 import { randomUUID } from 'crypto'
-
-import skillsPageTable from './skillsPageTable'
 
 describe('Test Skills Data InMemory Database', () => {
   const data = {

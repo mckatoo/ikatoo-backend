@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto'
 import { BaseEntity } from './BaseEntity'
 
 export default class AboutPage extends BaseEntity {
@@ -10,7 +11,7 @@ export default class AboutPage extends BaseEntity {
   }
 
   constructor ({ id, skills, title, description, image }: AboutPage) {
-    super({ id })
+    super({ id: !id ? randomUUID() : id })
     this.skills = skills
     this.title = title
     this.description = description

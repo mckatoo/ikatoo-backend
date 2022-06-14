@@ -1,6 +1,5 @@
+import projectTable from '@app/infra/repository/inMemory/projectTable'
 import { randomUUID } from 'crypto'
-
-import projectTable from './projectTable'
 
 describe('Test projects table Data InMemory Database', () => {
   const data = {

@@ -1,6 +1,5 @@
+import contactPageTable from '@app/infra/repository/inMemory/contactPageTable'
 import { randomUUID } from 'crypto'
-
-import contactPageTable from './contactPageTable'
 
 describe('Test Contact Data InMemory Database', () => {
   it('Should show default data on contact_page table', () => {

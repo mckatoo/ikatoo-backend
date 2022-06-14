@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - "$PWD/postgres-data:/var/lib/postgresql/data/pgdata"
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: app
+      PGDATA: /var/lib/postgresql/data/pgdata
