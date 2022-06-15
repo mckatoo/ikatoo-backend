@@ -1,7 +1,6 @@
 import AboutPageAdapter from '@app/adapter/AboutPageAdapter'
 import AboutPage from '@app/core/entities/AboutPage'
 import IAboutPageRepository from '@app/core/repositories/IAboutPageRepositories'
-import { randomUUID } from 'crypto'
 
 export default class AboutPageRepositoryMemory implements IAboutPageRepository {
   aboutPage: AboutPage[] = [
@@ -13,28 +12,25 @@ export default class AboutPageRepositoryMemory implements IAboutPageRepository {
     }
   ]
 
-  async getAboutPage (): Promise<AboutPage> {
-    return Promise.resolve(AboutPageAdapter.create(this.aboutPage[0]))
+  async getAboutPage (): Promise<AboutPage | undefined> {
+    if (this.aboutPage.length === 0) return undefined
+    const adapted = AboutPageAdapter.create(this.aboutPage[0])
+
+    return Promise.resolve(adapted)
   }
 
-  async createAboutPage ({ ...aboutPage }: AboutPage): Promise<void> {
+  async createAboutPage (aboutPage: AboutPage | undefined): Promise<void> {
+    if (!aboutPage) return
+
     const { id } = aboutPage
     if (this.aboutPage.find((page) => page.id === id)) {
       throw new Error('The id already exists.')
     }
-    if (!id) aboutPage.id = randomUUID()
 
     this.aboutPage = [AboutPageAdapter.create(aboutPage)]
   }
 
-  async deleteAboutPage (id: string): Promise<void> {
-    if (!this.aboutPage.find((page) => page.id === id)) {
-      throw new Error('The id does not exist.')
-    }
-
-    this.aboutPage.splice(
-      this.aboutPage.findIndex((page) => page.id === id),
-      1
-    )
+  async deleteAboutPage (): Promise<void> {
+    this.aboutPage = []
   }
 }

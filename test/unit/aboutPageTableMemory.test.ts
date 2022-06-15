@@ -1,4 +1,4 @@
-import AboutPageRepository from '@app/infra/repository/inMemory/AboutPageTable'
+import AboutPageRepository from '@app/infra/repository/inMemory/AboutPageMemory'
 import { randomUUID } from 'crypto'
 
 describe('Test About Data InMemory Database', () => {
@@ -61,10 +61,11 @@ describe('Test About Data InMemory Database', () => {
       .toThrowError('The id already exists.')
   })
 
-  it('Should return an error when trying to delete a non-existent id', async () => {
-    await expect(aboutPageRepository.deleteAboutPage(randomUUID()))
-      .rejects
-      .toThrowError('The id does not exist.')
+  it('Should delete a existent page', async () => {
+    aboutPageRepository.deleteAboutPage()
+    const aboutPage = await aboutPageRepository.getAboutPage()
+
+    expect(aboutPage).toBeUndefined()
   })
 
   it('Should update the about page', async () => {
