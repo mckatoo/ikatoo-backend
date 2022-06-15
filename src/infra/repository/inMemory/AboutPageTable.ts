@@ -1,6 +1,6 @@
 import AboutPageAdapter from '@app/adapter/AboutPageAdapter'
 import AboutPage from '@app/core/entities/AboutPage'
-import IAboutPageRepository from '@app/core/repositories/AboutPage/IAboutPageRepositories'
+import IAboutPageRepository from '@app/core/repositories/IAboutPageRepositories'
 import { randomUUID } from 'crypto'
 
 export default class AboutPageRepositoryMemory implements IAboutPageRepository {
